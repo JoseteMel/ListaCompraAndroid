@@ -31,7 +31,7 @@ public class NewItemActivity extends AppCompatActivity {
 
         String name = etName.getText().toString();
         if (name.equals("")) {
-            Toast.makeText(this, "Debes escribir el nombre del producto", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.product_name_mandatory, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -50,7 +50,7 @@ public class NewItemActivity extends AppCompatActivity {
         Product product = new Product(name, category, Integer.parseInt(quantity), Float.parseFloat(price), important);
 
         MainActivity.products.add(product);
-        Toast.makeText(this, "Producto "+ name + " añadido", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.product_added, name), Toast.LENGTH_SHORT).show();
 
         etName.setText("");
         etCategory.setText("");

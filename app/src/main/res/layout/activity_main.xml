@@ -10,7 +10,7 @@
         android:layout_width="410dp"
         android:layout_height="732dp"
         android:orientation="vertical"
-        android:padding="30px"
+        android:padding="10dp"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
@@ -18,7 +18,7 @@
             android:id="@+id/summary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="No hay productos en la lista" />
+            android:text="@string/no_products" />
 
         <ListView
             android:id="@+id/product_list"

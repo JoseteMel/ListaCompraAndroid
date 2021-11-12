@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 .sum();
 
         TextView tvSummary = findViewById(R.id.summary);
-        tvSummary.setText("Lista de la compra: " + productCount + " productos = " + totalPrice + "€");
+        tvSummary.setText(getString(R.string.summary, productCount, totalPrice));
     }
 
     @Override
