@@ -1,6 +1,7 @@
 package com.sanvalero.listadelacompraejercicio3;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.sanvalero.listadelacompraejercicio3.database.AppDatabase;
 import com.sanvalero.listadelacompraejercicio3.domain.Product;
 
 import java.util.ArrayList;
@@ -49,7 +51,9 @@ public class NewItemActivity extends AppCompatActivity {
 
         Product product = new Product(name, category, Integer.parseInt(quantity), Float.parseFloat(price), important);
 
-        MainActivity.products.add(product);
+        AppDatabase db = Room.databaseBuilder(getApplicationContext(),
+                AppDatabase.class, "products").allowMainThreadQueries().build();
+        db.productDao().insert(product);
         Toast.makeText(this, getString(R.string.product_added, name), Toast.LENGTH_SHORT).show();
 
         etName.setText("");
