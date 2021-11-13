@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Nombre del producto"
+            android:hint="@string/product_name"
             android:inputType="textPersonName" />
 
         <EditText
@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Categoría del producto"
+            android:hint="@string/product_category_name"
             android:inputType="textPersonName" />
 
         <EditText
@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Cantidad"
+            android:hint="@string/product_quantity"
             android:inputType="textPersonName" />
 
         <EditText
@@ -43,14 +43,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Precio"
+            android:hint="@string/product_price"
             android:inputType="textPersonName" />
 
         <CheckBox
             android:id="@+id/important_product"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Importante" />
+            android:text="@string/important_product" />
 
     </LinearLayout>
 
@@ -66,6 +66,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="add"
-            android:text="Añadir" />
+            android:text="@string/add_button" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

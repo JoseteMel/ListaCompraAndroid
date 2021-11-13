@@ -5,6 +5,6 @@
     <item
         android:id="@+id/new_item"
         android:icon="@android:drawable/ic_menu_add"
-        android:title="Añadir producto"
+        android:title="@string/add_product"
         app:showAsAction="always" />
 </menu>

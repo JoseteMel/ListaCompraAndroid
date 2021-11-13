@@ -2,6 +2,7 @@ package com.sanvalero.listadelacompraejercicio3;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,13 +16,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sanvalero.listadelacompraejercicio3.database.AppDatabase;
 import com.sanvalero.listadelacompraejercicio3.domain.Product;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
-    public static ArrayList<Product> products;
+    public List<Product> products;
     private ArrayAdapter<Product> productsAdapter;
 
     @Override
@@ -42,8 +45,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onResume() {
         super.onResume();
 
+        loadProducts();
         productsAdapter.notifyDataSetChanged();
         makeSummary();
+    }
+
+    private void loadProducts() {
+        products.clear();
+        AppDatabase db = Room.databaseBuilder(getApplicationContext(),
+                AppDatabase.class, "products").allowMainThreadQueries().build();
+        products.addAll(db.productDao().getAll());
     }
 
     private void makeSummary() {
@@ -54,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 .sum();
 
         TextView tvSummary = findViewById(R.id.summary);
-        tvSummary.setText("Lista de la compra: " + productCount + " productos = " + totalPrice + "€");
+        tvSummary.setText(getString(R.string.summary, productCount, totalPrice));
     }
 
     @Override
